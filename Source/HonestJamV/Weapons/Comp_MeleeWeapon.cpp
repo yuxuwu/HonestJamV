@@ -22,7 +22,7 @@ void UComp_MeleeWeapon::AttachWeapon(AHonestJamVCharacter* TargetCharacter)
 		return;
 	}
 	FAttachmentTransformRules AttachmentRules(EAttachmentRule::SnapToTarget, true);
-	AttachToComponent(Character->GetMesh1P(), AttachmentRules, FName(TEXT("GripPoint")));
+	AttachToComponent(Character->GetMesh1P(), AttachmentRules, WeaponSocketName);
 
 	Character->SetHasMeleeWeapon(true);
 
@@ -52,15 +52,18 @@ void UComp_MeleeWeapon::Attack()
 	}
 
 	// Try and play a firing animation if specified
-	if (AttackAnimation != nullptr)
+	if (AttackAnimation != nullptr && AttackAnimation)
 	{
 		// Get the animation object for the arms mesh
 		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
-		if (AnimInstance != nullptr)
+		if (AnimInstance != nullptr && !AnimInstance->Montage_IsPlaying(AttackAnimation))
 		{
 			AnimInstance->Montage_Play(AttackAnimation, 1.f);
 		}
 	}
+
+	// Notify that the actor is being picked up
+	OnAttack.Broadcast();
 }
 
 void UComp_MeleeWeapon::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -77,4 +80,5 @@ void UComp_MeleeWeapon::EndPlay(const EEndPlayReason::Type EndPlayReason)
 			Subsystem->RemoveMappingContext(AttackMappingContext);
 		}
 	}
+
 }

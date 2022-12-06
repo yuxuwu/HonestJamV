@@ -13,6 +13,7 @@ class USceneComponent;
 class UCameraComponent;
 class UAnimMontage;
 class USoundBase;
+class UComp_MeleeWeapon;
 
 UCLASS(config=Game)
 class AHonestJamVCharacter : public ACharacter
@@ -59,6 +60,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
 	bool bHasMeleeWeapon;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+	UComp_MeleeWeapon* Comp_MeleeWeapon;
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	UComp_MeleeWeapon* GetComp_MeleeWeapon() { return Comp_MeleeWeapon; }
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void SetComp_MeleeWeapon(UComp_MeleeWeapon* NewComp_MeleeWeapon) { Comp_MeleeWeapon = NewComp_MeleeWeapon; }
 
 	/** Setter to set the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
@@ -92,7 +101,5 @@ public:
 	USkeletalMeshComponent* GetMesh1P() const { return Mesh1P; }
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
-
-
 };
 

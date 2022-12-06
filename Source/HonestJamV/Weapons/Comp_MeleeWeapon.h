@@ -9,6 +9,10 @@
 class UBoxComponent;
 class AHonestJamVCharacter;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAttack);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFinishAttack);
+
+
 /**
  * 
  */
@@ -19,6 +23,12 @@ class HONESTJAMV_API UComp_MeleeWeapon : public USkeletalMeshComponent
 
 public:
 	UComp_MeleeWeapon();
+
+	UPROPERTY(BlueprintAssignable, Category = "Attacking")
+	FOnAttack OnAttack;
+
+	UPROPERTY(BlueprintAssignable, Category = "Attacking")
+	FOnFinishAttack OnFinishAttack;
 
 	/** Box Component that acts as the hit for the weapon*/
 	UPROPERTY(EditDefaultsOnly, Category = WeaponMesh)
@@ -48,11 +58,17 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* AttackAction;
 
+
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	AHonestJamVCharacter* Character;
+
+	UPROPERTY(EditAnywhere)
+	FName WeaponSocketName;
+
 };
