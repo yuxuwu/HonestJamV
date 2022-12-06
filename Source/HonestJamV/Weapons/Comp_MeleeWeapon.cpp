@@ -35,7 +35,7 @@ void UComp_MeleeWeapon::AttachWeapon(AHonestJamVCharacter* TargetCharacter)
 		}
 		if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerController->InputComponent))
 		{
-			// Fire
+			// Attack
 			EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &UComp_MeleeWeapon::Attack);
 		}
 	}
