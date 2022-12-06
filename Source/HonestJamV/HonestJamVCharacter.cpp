@@ -104,7 +104,17 @@ void AHonestJamVCharacter::SetHasRifle(bool bNewHasRifle)
 	bHasRifle = bNewHasRifle;
 }
 
+void AHonestJamVCharacter::SetHasMeleeWeapon(bool bNewHasMeleeWeapon)
+{
+	bHasMeleeWeapon = bNewHasMeleeWeapon;
+}
+
 bool AHonestJamVCharacter::GetHasRifle()
 {
 	return bHasRifle;
+}
+
+bool AHonestJamVCharacter::GetHasMeleeWeapon()
+{
+	return bHasMeleeWeapon;
 }

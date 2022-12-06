@@ -56,13 +56,24 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
 	bool bHasRifle;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
+	bool bHasMeleeWeapon;
+
+
 	/** Setter to set the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	void SetHasRifle(bool bNewHasRifle);
 
+	/** Setter to set the bool */
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void SetHasMeleeWeapon(bool bNewHasMeleeWeapon);
+
 	/** Getter for the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	bool GetHasMeleeWeapon();
 
 protected:
 	/** Called for movement input */
