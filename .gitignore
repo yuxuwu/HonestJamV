@@ -12,6 +12,8 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+Config/DefaultInput.ini
+Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/D/P5/OP5G4WRB4W3ZS2879OP1R2.uasset
 Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/0/43/HYQWORMY4JDQ5X3OKZXFLC.uasset
 Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/0/FG/C9C8NKPQ680JETAE5ROTT1.uasset
 Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/AZ/A7GPT109Y6ZTTJD4A7TXER.uasset
@@ -59,6 +61,8 @@ Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/6/TK/PIQ0B2FNWR15P52
 Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/9/KN/KHZG97SS6AL73U7AXDWH6J.uasset
 Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/C/7N/FDH7Y28CQFXDK8P6MM1HXM.uasset
 Content/__ExternalObjects__/ThirdPerson/Maps/ThirdPersonMap/E/GP/22PD314FCWY4ZK61DE3XZC.uasset
+Config/DefaultInput.ini
+Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/D/P5/OP5G4WRB4W3ZS2879OP1R2.uasset
 Content/Characters/Mannequin_UE4/Animations/Jog_Fwd.uasset
 Content/Characters/Mannequin_UE4/Materials/Layers/ML_Latex_Black.uasset
 Content/Characters/Mannequin_UE4/Materials/Layers/ML_ShinyPlastic_Beige.uasset
@@ -204,6 +208,9 @@ Content/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_MSR_MSK.uasset
 Content/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_N.uasset
 Content/Characters/Mannequins/Textures/Quinn/T_Quinn_02ID_Tan.uasset
 Content/Characters/Mannequins/Textures/Shared/T_UE_Logo_M.uasset
+Content/FirstPerson/Maps/FirstPersonMap.umap
+Content/StarterContent/Architecture/Floor_400x400.uasset
+Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset
 Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset
 Content/ThirdPerson/Blueprints/BP_ThirdPersonGameMode.uasset
 Content/ThirdPerson/Input/Actions/IA_Jump.uasset
@@ -212,3 +219,6 @@ Content/ThirdPerson/Input/Actions/IA_Move.uasset
 Content/ThirdPerson/Input/IMC_Default.uasset
 Content/ThirdPerson/Maps/ThirdPersonMap.umap
 Content/ThirdPerson/Maps/ThirdPersonMap_BuiltData.uasset
+Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset
+Content/StarterContent/Architecture/Floor_400x400.uasset
+Content/FirstPerson/Maps/FirstPersonMap.umap

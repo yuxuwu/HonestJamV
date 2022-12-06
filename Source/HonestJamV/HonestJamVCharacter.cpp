@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "HonestJamV/Weapons/Comp_MeleeWeapon.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -34,7 +35,6 @@ AHonestJamVCharacter::AHonestJamVCharacter()
 	Mesh1P->CastShadow = false;
 	//Mesh1P->SetRelativeRotation(FRotator(0.9f, -19.19f, 5.2f));
 	Mesh1P->SetRelativeLocation(FVector(-30.f, 0.f, -150.f));
-
 }
 
 void AHonestJamVCharacter::BeginPlay()
@@ -104,7 +104,17 @@ void AHonestJamVCharacter::SetHasRifle(bool bNewHasRifle)
 	bHasRifle = bNewHasRifle;
 }
 
+void AHonestJamVCharacter::SetHasMeleeWeapon(bool bNewHasMeleeWeapon)
+{
+	bHasMeleeWeapon = bNewHasMeleeWeapon;
+}
+
 bool AHonestJamVCharacter::GetHasRifle()
 {
 	return bHasRifle;
+}
+
+bool AHonestJamVCharacter::GetHasMeleeWeapon()
+{
+	return bHasMeleeWeapon;
 }
