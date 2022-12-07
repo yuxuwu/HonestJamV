@@ -37,14 +37,13 @@ void UComp_MeleeWeapon::AttachWeapon(AHonestJamVCharacter* TargetCharacter)
 		{
 			// Attack
 			EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Triggered, this, &UComp_MeleeWeapon::Attack);
+			EnhancedInputComponent->BindAction(BlockAction, ETriggerEvent::Triggered, this, &UComp_MeleeWeapon::Block);
 		}
 	}
 }
 
 void UComp_MeleeWeapon::Attack()
 {
-	if(GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Attack Function Ran"));
-
 	// Try and play the sound if specified
 	if (AttackSound != nullptr)
 	{
@@ -64,6 +63,24 @@ void UComp_MeleeWeapon::Attack()
 
 	// Notify that the actor is being picked up
 	OnAttack.Broadcast();
+}
+
+void UComp_MeleeWeapon::Block()
+{
+	if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Yellow, TEXT("Block Function Ran"));
+
+	// Try and play a firing animation if specified
+	if (BlockAnimation != nullptr && BlockAnimation)
+	{
+		// Get the animation object for the arms mesh
+		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
+		if (AnimInstance != nullptr && !AnimInstance->Montage_IsPlaying(BlockAnimation))
+		{
+			AnimInstance->Montage_Play(BlockAnimation, 1.f);
+		}
+	}
+
+	OnBlock.Broadcast();
 }
 
 void UComp_MeleeWeapon::EndPlay(const EEndPlayReason::Type EndPlayReason)
