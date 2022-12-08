@@ -10,6 +10,7 @@ class UBoxComponent;
 class AHonestJamVCharacter;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnAttack);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnBlock);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnFinishAttack);
 
 
@@ -28,19 +29,26 @@ public:
 	FOnAttack OnAttack;
 
 	UPROPERTY(BlueprintAssignable, Category = "Attacking")
-	FOnFinishAttack OnFinishAttack;
+	FOnBlock OnBlock;
 
+	UPROPERTY(BlueprintAssignable, Category = "Attacking")
+	FOnFinishAttack OnFinishAttack;
+	
 	/** Box Component that acts as the hit for the weapon*/
 	UPROPERTY(EditDefaultsOnly, Category = WeaponMesh)
 	UBoxComponent* WeaponHitBoxComponent;
 
 	/** Attaches weapon to the character */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void AttachWeapon(AHonestJamVCharacter* TargetCharacter);
+	virtual void AttachWeapon(AHonestJamVCharacter* TargetCharacter);
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	UAnimMontage* AttackAnimation;
+
+	/** AnimMontage to play each time we fire */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	UAnimMontage* BlockAnimation;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
@@ -58,16 +66,22 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* AttackAction;
 
+	/** Attack Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* BlockAction;
+
+	/** Make the weapon attack and swing weapon */
+	UFUNCTION(BlueprintCallable, Category = "Weapon")
+	void Block();
 
 protected:
 	/** Ends gameplay for this component. */
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	AHonestJamVCharacter* Character;
-
+private:
 	UPROPERTY(EditAnywhere)
 	FName WeaponSocketName;
 
