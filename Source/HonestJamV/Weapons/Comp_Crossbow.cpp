@@ -33,8 +33,7 @@ void UComp_Crossbow::Attack()
 		{
 			AnimInstance->Montage_Play(AttackAnimation, 1.f);
 		}
-		OnAttack.Broadcast();
-
+		OnShoot.Broadcast();
 		Character->SetCanShoot(false);
 	}
 }
