@@ -58,7 +58,13 @@ public:
 	bool bHasRifle;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
+	bool bHasCrossbow;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
 	bool bHasMeleeWeapon;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
+	bool bIsReloading;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	UComp_MeleeWeapon* Comp_MeleeWeapon;
@@ -69,9 +75,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	void SetComp_MeleeWeapon(UComp_MeleeWeapon* NewComp_MeleeWeapon) { Comp_MeleeWeapon = NewComp_MeleeWeapon; }
 
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void SetIsReloading(bool bNewIsReloading) { bIsReloading = bNewIsReloading; }
+
 	/** Setter to set the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	void SetHasRifle(bool bNewHasRifle);
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void SetHasCrossbow(bool bNewHasCrossbow) { bHasCrossbow = bNewHasCrossbow; }
 
 	/** Setter to set the bool */
 	UFUNCTION(BlueprintCallable, Category = Weapon)
@@ -82,7 +94,16 @@ public:
 	bool GetHasRifle();
 
 	UFUNCTION(BlueprintCallable, Category = Weapon)
+	bool GetIsReloading() { return bIsReloading; }
+
+	/** Getter for the bool */
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	bool GetHasCrossbow() { return bHasCrossbow; }
+
+	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasMeleeWeapon();
+
+
 
 protected:
 	/** Called for movement input */

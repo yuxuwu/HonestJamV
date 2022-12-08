@@ -33,14 +33,14 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "Attacking")
 	FOnFinishAttack OnFinishAttack;
-
+	
 	/** Box Component that acts as the hit for the weapon*/
 	UPROPERTY(EditDefaultsOnly, Category = WeaponMesh)
 	UBoxComponent* WeaponHitBoxComponent;
 
 	/** Attaches weapon to the character */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void AttachWeapon(AHonestJamVCharacter* TargetCharacter);
+	virtual void AttachWeapon(AHonestJamVCharacter* TargetCharacter);
 
 	/** AnimMontage to play each time we fire */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
@@ -79,10 +79,9 @@ protected:
 	UFUNCTION()
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	AHonestJamVCharacter* Character;
-
+private:
 	UPROPERTY(EditAnywhere)
 	FName WeaponSocketName;
 

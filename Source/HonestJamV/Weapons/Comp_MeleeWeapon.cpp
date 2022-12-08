@@ -55,7 +55,7 @@ void UComp_MeleeWeapon::Attack()
 	{
 		// Get the animation object for the arms mesh
 		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
-		if (AnimInstance != nullptr && !AnimInstance->Montage_IsPlaying(AttackAnimation))
+		if (AnimInstance != nullptr && !AnimInstance->Montage_IsPlaying(AttackAnimation) && !Character->GetIsReloading())
 		{
 			AnimInstance->Montage_Play(AttackAnimation, 1.f);
 		}
