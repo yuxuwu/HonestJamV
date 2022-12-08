@@ -16,4 +16,6 @@ class HONESTJAMV_API UComp_Crossbow : public UComp_MeleeWeapon
 	
 public:
 	virtual void AttachWeapon(AHonestJamVCharacter* TargetCharacter) override;
+	virtual void Attack() override;
+
 };

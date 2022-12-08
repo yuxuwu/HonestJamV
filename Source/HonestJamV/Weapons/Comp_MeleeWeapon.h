@@ -56,7 +56,7 @@ public:
 
 	/** Make the weapon attack and swing weapon */
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void Attack();
+	virtual void Attack();
 
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))

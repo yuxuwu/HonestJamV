@@ -44,6 +44,10 @@ void UComp_MeleeWeapon::AttachWeapon(AHonestJamVCharacter* TargetCharacter)
 
 void UComp_MeleeWeapon::Attack()
 {
+	if (Character == nullptr || Character->GetController() == nullptr)
+	{
+		return;
+	}
 	// Try and play the sound if specified
 	if (AttackSound != nullptr)
 	{
@@ -51,7 +55,7 @@ void UComp_MeleeWeapon::Attack()
 	}
 
 	// Try and play a firing animation if specified
-	if (AttackAnimation != nullptr && AttackAnimation)
+	if (AttackAnimation != nullptr)
 	{
 		// Get the animation object for the arms mesh
 		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
