@@ -6,6 +6,8 @@
 #include "Comp_MeleeWeapon.h"
 #include "Comp_Crossbow.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnShoot);
+
 /**
  * 
  */
@@ -16,4 +18,8 @@ class HONESTJAMV_API UComp_Crossbow : public UComp_MeleeWeapon
 	
 public:
 	virtual void AttachWeapon(AHonestJamVCharacter* TargetCharacter) override;
+	virtual void Attack() override;
+
+	UPROPERTY(BlueprintAssignable, Category = "Attacking")
+	FOnShoot OnShoot;
 };

@@ -103,8 +103,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasMeleeWeapon();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
+	bool bCanShoot = true;
 
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	bool GetCanShoot() { return bCanShoot; }
 
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+	void SetCanShoot(bool NewCanShoot) { bCanShoot = NewCanShoot; }
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
