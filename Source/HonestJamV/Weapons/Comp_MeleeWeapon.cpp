@@ -55,7 +55,7 @@ void UComp_MeleeWeapon::Attack()
 	}
 
 	// Try and play a firing animation if specified
-	if (AttackAnimation != nullptr)
+	if (AttackAnimation != nullptr && Character->bHasMeleeWeapon)
 	{
 		// Get the animation object for the arms mesh
 		UAnimInstance* AnimInstance = Character->GetMesh1P()->GetAnimInstance();
@@ -63,10 +63,12 @@ void UComp_MeleeWeapon::Attack()
 		{
 			AnimInstance->Montage_Play(AttackAnimation, 1.f);
 		}
+
+		OnAttack.Broadcast();
 	}
 
 	// Notify that the actor is being picked up
-	OnAttack.Broadcast();
+	
 }
 
 void UComp_MeleeWeapon::Block()
